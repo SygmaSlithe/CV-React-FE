@@ -1,12 +1,12 @@
 import React from "react";
-import logo from "./grapple from srs1.png"
+import logo from "../logo.svg"
 
 class Navbar extends React.Component {
   state = {};
   render() {
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               <img
@@ -18,12 +18,12 @@ class Navbar extends React.Component {
               />
               <h3 className="d-inline-block align-center">Grapple</h3>
             </a>
-            <div class="row g-0">
-              <div class="col-md-5 w-auto ms-auto">
-                <button type="button " className="btn btn-outline-primary">
+            <div className="row g-0">
+              <div className="col-md-5 w-auto ms-auto">
+                <button type="button " className="btn btn-outline-light">
                   Sign up
                 </button>
-                <button type="button" className="btn btn-outline-primary mx-2">
+                <button type="button" className="btn btn-outline-light mx-2">
                   Sign In
                 </button>
               </div>
