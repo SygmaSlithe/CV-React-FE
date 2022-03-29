@@ -1,0 +1,30 @@
+{
+  "name": "cv-react-fe",
+  "version": "1.0.0",
+  "description": "backend api for web app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rth1-618/CV-React-FE.git"
+  },
+  "keywords": [
+    "backend",
+    "nodejs",
+    "express",
+    "mongodb"
+  ],
+  "author": "Parth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rth1-618/CV-React-FE/issues"
+  },
+  "homepage": "https://github.com/rth1-618/CV-React-FE#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}
