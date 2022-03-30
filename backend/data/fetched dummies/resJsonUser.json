@@ -1,0 +1,100 @@
+{
+  "$__": {
+    "activePaths": {
+      "paths": {
+        "pic": "init",
+        "isAdmin": "init",
+        "eduDetail": "init",
+        "contact": "init",
+        "password": "init",
+        "userId": "init",
+        "lname": "init",
+        "fname": "init",
+        "_id": "init",
+        "address": "init",
+        "additionalDetail": "init",
+        "createdAt": "init",
+        "updatedAt": "init",
+        "__v": "init"
+      },
+      "states": {
+        "ignore": {},
+        "default": {},
+        "init": {
+          "_id": true,
+          "fname": true,
+          "lname": true,
+          "userId": true,
+          "password": true,
+          "address": true,
+          "contact": true,
+          "eduDetail": true,
+          "additionalDetail": true,
+          "isAdmin": true,
+          "pic": true,
+          "createdAt": true,
+          "updatedAt": true,
+          "__v": true
+        },
+        "modify": {},
+        "require": {}
+      },
+      "stateNames": ["require", "modify", "init", "default", "ignore"]
+    },
+    "strictMode": true,
+    "skipId": true,
+    "selected": {},
+    "fields": {},
+    "exclude": null,
+    "_id": "624488f9f42bf7c7d1438077",
+    "emitter": {
+      "_events": {
+        "save": [null, null, null, null],
+        "isNew": [null, null, null, null]
+      },
+      "_eventsCount": 2,
+      "_maxListeners": 0
+    }
+  },
+  "$isNew": false,
+  "_doc": {
+    "_id": "624488f9f42bf7c7d1438077",
+    "fname": "Mary",
+    "lname": "Jane",
+    "userId": "u008",
+    "password": "$2a$10$Bob7D8n12u3ZWHDSkStTfOHu6zVQ2NszpKYjEeVIUL53l6Fxe/Coa",
+    "address": {
+      "_id": "624488f9f42bf7c7d1438078"
+    },
+    "contact": {
+      "email": "mcphee@mac.com",
+      "phone": [],
+      "_id": "624488f9f42bf7c7d1438079"
+    },
+    "eduDetail": {
+      "school": {
+        "schoolName": "McPherson County School",
+        "_id": "624488f9f42bf7c7d143807b"
+      },
+      "uni": {
+        "uniName": "Name of uni",
+        "degree": "Arts",
+        "gradYear": 2029,
+        "_id": "624488f9f42bf7c7d143807c"
+      },
+      "_id": "624488f9f42bf7c7d143807a"
+    },
+    "additionalDetail": {
+      "socialLinks": [],
+      "interests": [],
+      "talents": [],
+      "skills": [],
+      "_id": "624488f9f42bf7c7d143807d"
+    },
+    "isAdmin": false,
+    "pic": "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+    "createdAt": "2022-03-30T16:44:41.844Z",
+    "updatedAt": "2022-03-30T16:44:41.844Z",
+    "__v": 0
+  }
+}

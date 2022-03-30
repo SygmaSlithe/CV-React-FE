@@ -1,0 +1,45 @@
+{
+  "_id": "624488f9f42bf7c7d1438077",
+  "fname": "Mary",
+  "lname": "Jane",
+  "userId": "u008",
+  "password": "$2a$10$Bob7D8n12u3ZWHDSkStTfOHu6zVQ2NszpKYjEeVIUL53l6Fxe/Coa",
+  "address": {
+    "city": "Kaziranga",
+    "province": "Assam",
+    "zip": "785421",
+    "_id": "624488f9f42bf7c7d1438078"
+  },
+  "contact": {
+    "email": "mcphee@mac.com",
+    "phone": ["7894561235", "9653254123"],
+    "_id": "624488f9f42bf7c7d1438079"
+  },
+  "eduDetail": {
+    "school": {
+      "schoolName": "McPherson County School",
+      "marks": "92%",
+      "_id": "624488f9f42bf7c7d143807b"
+    },
+    "uni": {
+      "uniName": "Name of uni",
+      "degree": "Arts",
+      "gradYear": 2029,
+      "_id": "624488f9f42bf7c7d143807c"
+    },
+    "_id": "624488f9f42bf7c7d143807a"
+  },
+  "additionalDetail": {
+    "socialLinks": ["github.com/uth1651", "linkedin.com/qwez78"],
+    "interests": ["Volley Ball", "Fencing", "Technology"],
+    "talents": ["some here", "and a very there"],
+    "skills": ["uhh..", "sleeping?"],
+    "about": "About user: blah blah blah, coffeeVampire, 20, Saggitarus-vegetarian. Cats should replace the government.",
+    "_id": "624488f9f42bf7c7d143807d"
+  },
+  "isAdmin": false,
+  "pic": "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+  "createdAt": "2022-03-30T16:44:41.844Z",
+  "updatedAt": "2022-03-30T16:44:41.844Z",
+  "__v": 0
+}

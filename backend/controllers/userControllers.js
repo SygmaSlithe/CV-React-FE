@@ -1,7 +1,73 @@
-const registerUser = async (req, res) => {
-  const { name, email, password, pic } = req.body;
+const asyncHandler = require("express-async-handler");
+const User = require("../models/userModel");
+const generateToken = require("../utils/generateToken");
 
-  res.send({ name, email });
-};
+const registerUser = asyncHandler(async (req, res) => {
+  const {
+    fname,
+    lname,
+    userId,
+    password,
+    contact,
+    eduDetail,
+    address,
+    additionalDetail,
+    pic,
+  } = req.body;
 
-module.exports = { registerUser };
+  const UserAlreadyExists = await User.findOne({ userId });
+
+  if (UserAlreadyExists) {
+    res.status(400); //error code 400
+    throw new Error("User " + userId + " Already Exists.");
+  }
+
+  const user = await User.create({
+    fname,
+    lname,
+    address,
+    additionalDetail,
+    userId,
+    password,
+    contact,
+    eduDetail,
+    pic,
+  });
+
+  if (user) {
+    //success code
+    res.status(201).json({
+      _id: user._id,
+      fname: user.fname,
+      userId: user.userId,
+      pic: user.pic,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Error: User Creation Failed!!!");
+  }
+});
+
+const authUser = asyncHandler(async (req, res) => {
+  const { userId, password } = req.body;
+
+  const user = await User.findOne({ userId });
+
+  if (user && (await user.matchPassword(password))) {
+    res.json({
+      _id: user._id,
+      fname: user.fname,
+      userId: user.userId,
+      isAdmin: user.isAdmin,
+      pic: user.pic,
+      token: generateToken(user._id),
+    });
+    // res.json({ ...user });
+  } else {
+    res.status(400);
+    throw new Error("Error: Invalid UserId or Password!!!");
+  }
+});
+
+module.exports = { registerUser, authUser };

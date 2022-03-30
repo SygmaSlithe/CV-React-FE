@@ -15,23 +15,23 @@ const LandingPage = () => {
                 style={{
                   fontSize: "2.5vw",
                   top: "70%",
-                  backgroundColor: "white",
-                  color: "",
                 }}
               >
                 Your one stop to start fresh.
               </p>
             </div>
             <div className="buttonContainer">
-              <a href="#/login">
-                <Button size="lg" className="landingButton"
-                variant="outline-light">
+              <a href="/login">
+                <Button
+                  size="lg"
+                  className="landingButton"
+                  variant="outline-light"
+                >
                   Login
                 </Button>
               </a>
-              <a href="#/register">
-                <Button size="lg" className="landingButton"
-                variant="success">
+              <a href="/register">
+                <Button size="lg" className="landingButton" variant="success">
                   Sign Up
                 </Button>
               </a>
