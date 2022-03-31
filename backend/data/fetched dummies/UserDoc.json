@@ -1,38 +1,38 @@
 {
   "_id": "624488f9f42bf7c7d1438077",
-  "fname": "Mary",
-  "lname": "Jane",
-  "userId": "u008",
+  "fname": "Robin",
+  "lname": "Felin",
+  "userId": "u009",
   "password": "$2a$10$Bob7D8n12u3ZWHDSkStTfOHu6zVQ2NszpKYjEeVIUL53l6Fxe/Coa",
   "address": {
-    "city": "Kaziranga",
-    "province": "Assam",
-    "zip": "785421",
+    "city": "Sinchal",
+    "province": "Himachal Pradesh",
+    "zip": "755151",
     "_id": "624488f9f42bf7c7d1438078"
   },
   "contact": {
-    "email": "mcphee@mac.com",
-    "phone": ["7894561235", "9653254123"],
+    "email": "robin@rob.com",
+    "phone": ["9978945635", "2396532123"],
     "_id": "624488f9f42bf7c7d1438079"
   },
   "eduDetail": {
     "school": {
-      "schoolName": "McPherson County School",
-      "marks": "92%",
+      "schoolName": "Sinchal Public School",
+      "marks": "89%",
       "_id": "624488f9f42bf7c7d143807b"
     },
     "uni": {
-      "uniName": "Name of uni",
-      "degree": "Arts",
-      "gradYear": 2029,
+      "uniName": "Sinchal Uni",
+      "degree": "Fine Arts",
+      "gradYear": 2023,
       "_id": "624488f9f42bf7c7d143807c"
     },
     "_id": "624488f9f42bf7c7d143807a"
   },
   "additionalDetail": {
-    "socialLinks": ["github.com/uth1651", "linkedin.com/qwez78"],
-    "interests": ["Volley Ball", "Fencing", "Technology"],
-    "talents": ["some here", "and a very there"],
+    "socialLinks": ["github.com/robin13", "linkedin.com/u/robin13"],
+    "interests": ["Figure Skating", "Fencing", "Cafes"],
+    "talents": ["some here", "and a very few there"],
     "skills": ["uhh..", "sleeping?"],
     "about": "About user: blah blah blah, coffeeVampire, 20, Saggitarus-vegetarian. Cats should replace the government.",
     "_id": "624488f9f42bf7c7d143807d"

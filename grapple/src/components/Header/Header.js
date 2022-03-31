@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link, useHistory } from "react-router-dom";
 import {
   Navbar,
   Nav,
@@ -13,23 +13,24 @@ import {
 import logo from "../../images/grapple from srs1.png";
 
 const Header = () => {
+  const history = useHistory();
   return (
     <>
       <Navbar bg="dark" expand="lg" variant="dark">
         <Container fluid="md">
-          <Navbar.Brand >
-            <Link to='/'>
-            <img
-              src={logo}
-              className="d-inline-block align-top img-thumbnail"
-              alt="logo"
-              width={70}
-              height={70}
-            />
+          <Navbar.Brand>
+            <Link to="/">
+              <img
+                src={logo}
+                className="d-inline-block align-top img-thumbnail"
+                alt="logo"
+                width={70}
+                height={70}
+              />
 
-            <h2 className="d-inline-block align-center m-2 display-5">
-              Grapple
-            </h2>
+              <h2 className="d-inline-block align-center m-2 display-5">
+                Grapple
+              </h2>
             </Link>
           </Navbar.Brand>
 
@@ -52,17 +53,28 @@ const Header = () => {
                     <Button variant="outline-success">Search</Button>
                   </Form>
                 </Nav>
-                <Nav.Link >
-                  <Link to='/myach'style={{ color: 'inherit', textDecoration: 'inherit'}}  >
+                <Nav.Link>
+                  <Link
+                    to="/myachs"
+                    style={{ color: "inherit", textDecoration: "inherit" }}
+                  >
                     Home
                   </Link>
-                  </Nav.Link>
+                </Nav.Link>
+
                 <NavDropdown title="User" id="navbarScrollingDropdown">
                   <NavDropdown.Item href="#action3">
                     My Profile
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">Sign Out</NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={() => {
+                      localStorage.removeItem("userInfo");
+                      history.push("/");
+                    }}
+                  >
+                    Log Out
+                  </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             </Nav>

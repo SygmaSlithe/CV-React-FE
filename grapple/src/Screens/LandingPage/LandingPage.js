@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./LandingPage.css";
 
 const LandingPage = () => {
+  // useEffect(() => {
+  //   const userInfo = localStorage.getItem("userInfo");
+
+  //   if (userInfo) {
+  //     history.push("/myachs");
+  //   }
+  // }, [history]);
+
   return (
     <div className="main">
       <Container>
@@ -21,7 +30,10 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="buttonContainer">
-              <a href="/login">
+              <Link
+                to="/login"
+                style={{ color: "inherit", textDecoration: "inherit" }}
+              >
                 <Button
                   size="lg"
                   className="landingButton"
@@ -29,12 +41,15 @@ const LandingPage = () => {
                 >
                   Login
                 </Button>
-              </a>
-              <a href="/register">
+              </Link>
+              <Link
+                to="/register"
+                style={{ color: "inherit", textDecoration: "inherit" }}
+              >
                 <Button size="lg" className="landingButton" variant="success">
                   Sign Up
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </Row>

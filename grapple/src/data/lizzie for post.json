@@ -1,0 +1,35 @@
+{
+  "fname": "Lizzie",
+  "lname": "Felin",
+  "userId": "u009",
+  "password": "lizziefelin",
+  "address": {
+    "city": "Sinchal",
+    "province": "Himachal Pradesh",
+    "zip": "355151"
+  },
+  "contact": {
+    "email": "lizzie@rob.com",
+    "phone": ["9978945635", "2396532123"]
+  },
+  "eduDetail": {
+    "school": {
+      "schoolName": "Sinchal Public School",
+      "marks": "89%"
+    },
+    "uni": {
+      "uniName": "Sinchal Uni",
+      "degree": "Fine Arts",
+      "gradYear": 2023
+    }
+  },
+  "additionalDetail": {
+    "socialLinks": ["github.com/lizzie13", "linkedin.com/u/lizzie13"],
+    "interests": ["Figure Skating", "Fencing", "Cafes"],
+    "talents": ["some here", "and a very few there"],
+    "skills": ["uhh..", "sleeping?"],
+    "about": "About user: blah blah blah, coffeeVampire, 20, Saggitarus-vegetarian. Cats should replace the government."
+  },
+  "isAdmin": false,
+  "pic": "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+}

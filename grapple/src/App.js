@@ -25,7 +25,7 @@ function App() {
           <Route path="/" component={LandingPage} exact />
           <Route path="/login" component={LoginScreen} exact />
           <Route path="/register" component={RegisterScreen} exact />
-          <Route path="/myach" component={() => <MyAchievements />} />
+          <Route path="/myachs" component={() => <MyAchievements />} />
           {/* <Route path="/addAch" component={()=> <AddAchievement />} /> */}
 
           {/* <NewUserForm /> */}
