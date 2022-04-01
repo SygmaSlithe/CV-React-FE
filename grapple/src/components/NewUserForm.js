@@ -1,18 +1,29 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Col, Form as FormBS, Row } from "react-bootstrap";
 import * as Yup from "yup";
 import userInitObj from "../data/userInitObj";
 import "./NewUserForm.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import CustomErrorMessage from "./ErrorMessage";
+import Loading from "./Loading";
+import { register } from "../actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
 
-export default class NewUserForm extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    // [loading, setLoading] = useState(false);
-  }
+const NewUserForm = ({ history }) => {
+  // handleSubmit = handleSubmit.bind(this);
+  const dispatch = useDispatch();
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
+  // [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+    }
+  }, [history, userInfo]);
+
   /*{
       email: Yup.string()
         .required("Email is required")
@@ -29,7 +40,7 @@ export default class NewUserForm extends Component {
         .min(6, "Must be exactly 6 digits")
         .max(6, "Must be exactly 6 digits"),
 }*/
-  validationSchema() {
+  const validationSchema = () => {
     return Yup.object().shape({
       fname: Yup.string().required("First name is required"),
       lname: Yup.string().required("Last name is required"),
@@ -87,38 +98,46 @@ export default class NewUserForm extends Component {
         "Can't proceed without accepting Terms"
       ),
     });
-  }
-
-  handleSubmit = async (data) => {
-    // e.preventDefault();
-    console.log("Hi handler.");
-    // console.log(data);
-    // alert(JSON.stringify(data, null, 2));
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      // setLoading(true);
-      const { dataDB } = await axios.post("/api/users", data, config);
-      // setLoading(false);
-      localStorage.setItem(JSON.stringify(dataDB, null, 2));
-    } catch (error) {
-      console.log(error.response.data.message);
-    }
   };
 
-  render() {
-    const initialValues = userInitObj;
-    console.log(initialValues);
-    return (
-      <>
-        <div className="register-form container mt-3 px-5">
+  const handleSubmit = async (data) => {
+    console.log("data", data);
+    dispatch(register(data));
+    // // e.preventDefault();
+    // console.log("Hi handler.");
+    // // console.log(data);
+    // // alert(JSON.stringify(data, null, 2));
+    // try {
+    //   const config = {
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //   };
+    //   // setLoading(true);
+    //   const { dataDB } = await axios.post("/api/users", data, config);
+    //   // setLoading(false);
+    //   localStorage.setItem(JSON.stringify(dataDB, null, 2));
+    // } catch (error) {
+    //   console.log(error.response.data.message);
+    // }
+  };
+
+  const initialValues = userInitObj;
+  // console.log(initialValues);
+
+  return (
+    <>
+      <div className="register-form container mt-3 px-5">
+        {error && (
+          <CustomErrorMessage variant="danger">{error}</CustomErrorMessage>
+        )}
+        {loading ? (
+          <Loading />
+        ) : (
           <Formik
             initialValues={initialValues}
-            validationSchema={this.validationSchema}
-            onSubmit={this.handleSubmit}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
           >
             {({ resetForm }) => (
               <Form className="">
@@ -484,14 +503,16 @@ export default class NewUserForm extends Component {
               </Form>
             )}
           </Formik>
+        )}
 
-          <Row className="py-3">
-            <Col>
-              Already registered with us? <Link to="/login">Login here</Link>!
-            </Col>
-          </Row>
-        </div>
-      </>
-    );
-  }
-}
+        <Row className="py-3">
+          <Col>
+            Already registered with us? <Link to="/login">Login here</Link>!
+          </Col>
+        </Row>
+      </div>
+    </>
+  );
+};
+
+export default withRouter(NewUserForm);

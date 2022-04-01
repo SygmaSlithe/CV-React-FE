@@ -3,42 +3,55 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import "./LoginScreen.css";
-import axios from "axios";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/userActions";
+
 const LoginScreen = ({ history }) => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+  // const [error, setError] = useState(false);
+  // const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/myachs");
+    }
+  }, [history, userInfo]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    dispatch(login(userId, password));
     // console.log(userId, password);
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
+    // try {
+    //   const config = {
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //   };
 
-      setLoading(true);
-      const { data } = await axios.post(
-        "/api/users/login",
-        {
-          userId,
-          password,
-        },
-        config
-      );
-      console.log(data);
-      setError(false);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false);
-    } catch (error) {
-      setError(error.response.data.message);
-      setLoading(false);
-    }
+    //   setLoading(true);
+    //   const { data } = await axios.post(
+    //     "/api/users/login",
+    //     {
+    //       userId,
+    //       password,
+    //     },
+    //     config
+    //   );
+    //   console.log(data);
+    //   setError(false);
+    //   localStorage.setItem("userInfo", JSON.stringify(data));
+    //   setLoading(false);
+    // } catch (error) {
+    //   setError(error.response.data.message);
+    //   setLoading(false);
+    // }
   };
 
   return (

@@ -11,9 +11,20 @@ import {
 } from "react-bootstrap";
 
 import logo from "../../images/grapple from srs1.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/userActions";
 
 const Header = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    // localStorage.removeItem("userInfo");
+    dispatch(logout());
+    history.push("/");
+  };
   return (
     <>
       <Navbar bg="dark" expand="lg" variant="dark">
@@ -67,12 +78,7 @@ const Header = () => {
                     My Profile
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item
-                    onClick={() => {
-                      localStorage.removeItem("userInfo");
-                      history.push("/");
-                    }}
-                  >
+                  <NavDropdown.Item onClick={logoutHandler}>
                     Log Out
                   </NavDropdown.Item>
                 </NavDropdown>
