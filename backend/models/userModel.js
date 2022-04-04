@@ -34,8 +34,6 @@ const UniDetailSchema = mongoose.Schema({
   },
   gradYear: {
     type: Number,
-    min: 2000,
-    max: 2999,
     required: true,
   },
 });
@@ -97,9 +95,12 @@ const userSchema = mongoose.Schema(
     },
     pic: {
       type: String,
-      required: true,
       default:
         "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+    },
+    points: {
+      type: Number,
+      default: 0,
     },
   },
   {

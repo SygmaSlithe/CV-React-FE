@@ -61,12 +61,13 @@ const authUser = asyncHandler(async (req, res) => {
       userId: user.userId,
       isAdmin: user.isAdmin,
       pic: user.pic,
+      points: user.points,
       token: generateToken(user._id),
     });
     // res.json({ ...user });
   } else {
     res.status(400);
-    throw new Error("Error: Invalid UserId or Password!!!");
+    throw new Error("Error: Invalid User ID or Password!!!");
   }
 });
 

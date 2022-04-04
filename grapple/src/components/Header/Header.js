@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   Navbar,
@@ -14,7 +14,7 @@ import logo from "../../images/grapple from srs1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userActions";
 
-const Header = () => {
+const Header = ({ setSearch }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
@@ -25,10 +25,11 @@ const Header = () => {
     dispatch(logout());
     history.push("/");
   };
+
   return (
     <>
-      <Navbar bg="dark" expand="lg" variant="dark">
-        <Container fluid="md">
+      <Navbar bg="dark" expand="lg" variant="dark" collapseOnSelect>
+        <Container>
           <Navbar.Brand>
             <Link to="/">
               <img
@@ -44,38 +45,31 @@ const Header = () => {
               </h2>
             </Link>
           </Navbar.Brand>
-
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav className="d-flex">
-              <Nav
-                className="me-auto my-2 my-lg-0"
-                style={{ maxHeight: "100px" }}
-                navbarScroll
-              >
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          {userInfo && (
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto my-2 my-lg-0">
                 <Nav className="m-auto">
                   <Form className="d-flex">
                     <FormControl
                       type="search"
-                      placeholder="Search"
+                      placeholder="Search Here"
                       className="me-2"
                       aria-label="Search"
+                      onChange={(e) => setSearch(e.target.value)}
                     />
-                    <Button variant="outline-success">Search</Button>
                   </Form>
                 </Nav>
-                <Nav.Link>
-                  <Link
-                    to="/myachs"
-                    style={{ color: "inherit", textDecoration: "inherit" }}
-                  >
-                    Home
-                  </Link>
-                </Nav.Link>
+              </Nav>
+              <Nav className="flex-justify-end">
+                <Nav.Link to="/myachs">My Achievements</Nav.Link>
 
-                <NavDropdown title="User" id="navbarScrollingDropdown">
+                <NavDropdown
+                  title={userInfo?.fname}
+                  id="navbarScrollingDropdown"
+                >
                   <NavDropdown.Item href="#action3">
-                    My Profile
+                    Your Score: {`${userInfo?.points}`}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logoutHandler}>
@@ -83,8 +77,8 @@ const Header = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
-            </Nav>
-          </Navbar.Collapse>
+            </Navbar.Collapse>
+          )}
         </Container>
       </Navbar>
     </>

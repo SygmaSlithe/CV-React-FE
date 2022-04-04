@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
+const achRoutes = require("./routes/achRoutes");
 const achievements = require("./data/achievements");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 
@@ -11,15 +12,15 @@ connectDB();
 app.use(express.json()); // imp!
 
 app.use("/api/users", userRoutes); //you had forgotten the forward slash here!!!!! -_-
-
+app.use("/api/achs", achRoutes);
 app.get("/", (req, res) => {
   res.send("GET API is running...");
 });
 
 // fetch all
-app.get("/api/achs", (req, res) => {
-  res.json(achievements);
-});
+// app.get("/api/achs", (req, res) => {
+//   res.json(achievements);
+// });
 
 /*
 // fetch by id
