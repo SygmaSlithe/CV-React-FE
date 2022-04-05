@@ -71,4 +71,11 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser, authUser };
+const getLeads = asyncHandler(async (req, res) => {
+  const leadList = await User.find({}, ["userId", "fname", "lname", "points"])
+    .sort({ points: "descending" })
+    .limit(10);
+  res.json(leadList);
+});
+
+module.exports = { registerUser, authUser, getLeads };
