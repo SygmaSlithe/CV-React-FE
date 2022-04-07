@@ -69,6 +69,7 @@ const MyAchievements = ({ search }) => {
       {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
       {loading && <Loading />}
 
+      {console.log("achs", achs)}
       {achs
         ?.reverse()
         .filter((filteredAch) =>
@@ -118,9 +119,14 @@ const MyAchievements = ({ search }) => {
                 </Accordion.Header>
                 <Accordion.Body>
                   {/* <Card.Body> */}
-                  <h4>
+                  <h3>
                     <Badge bg="dark" text="light">
                       Category - {ach.category}
+                    </Badge>
+                  </h3>
+                  <h4>
+                    <Badge bg="primary" text="light">
+                      SubCategory - {ach.subCategory}
                     </Badge>
                   </h4>
 

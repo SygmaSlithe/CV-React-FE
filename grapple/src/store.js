@@ -1,7 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import {
+  leaderboardReducer,
+  userLoginReducer,
+  userRegisterReducer,
+} from "./reducers/userReducers";
 import {
   achCreateReducer,
   achDeleteReducer,
@@ -17,6 +21,7 @@ const reducer = combineReducers({
   achCreate: achCreateReducer,
   achUpdate: achUpdateReducer,
   achDelete: achDeleteReducer,
+  leaderboard: leaderboardReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

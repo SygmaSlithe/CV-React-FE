@@ -62,13 +62,28 @@ const Header = ({ setSearch }) => {
                 </Nav>
               </Nav>
               <Nav className="flex-justify-end">
-                <Nav.Link to="/myachs">My Achievements</Nav.Link>
+                <Nav.Link>
+                  <Link
+                    style={{ textDecoration: "inherit", color: "inherit" }}
+                    to="/myachs"
+                  >
+                    My Achievements
+                  </Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link
+                    style={{ textDecoration: "inherit", color: "inherit" }}
+                    to="/leaderboard"
+                  >
+                    Leaderboard
+                  </Link>
+                </Nav.Link>
 
                 <NavDropdown
                   title={userInfo?.fname}
                   id="navbarScrollingDropdown"
                 >
-                  <NavDropdown.Item href="#action3">
+                  <NavDropdown.Item>
                     Your Score: {`${userInfo?.points}`}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />

@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  LEADERBOARD_FAIL,
+  LEADERBOARD_REQUEST,
+  LEADERBOARD_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -83,4 +86,21 @@ export const register = (dataBody) => async (dispatch) => {
     });
   }
   // };
+};
+
+export const leadList = () => async (dispatch) => {
+  try {
+    dispatch({ type: LEADERBOARD_REQUEST });
+    const { data } = await axios.get("/api/users/leads");
+
+    dispatch({ type: LEADERBOARD_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: LEADERBOARD_FAIL,
+      payload:
+        error.message && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };

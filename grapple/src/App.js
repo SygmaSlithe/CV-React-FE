@@ -12,6 +12,7 @@ import RegisterScreen from "./Screens/RegisterScreen/RegisterScreen";
 import CreateAch from "./Screens/CreateAch/CreateAch";
 import SingleAch from "./Screens/SingleAch/SingleAch";
 import { useState } from "react";
+import LeaderBoard from "./Screens/LeaderBoard/LeaderBoard";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -35,6 +36,7 @@ function App() {
         />
         <Route path="/createAch" component={CreateAch} />
         <Route path="/ach/:id" component={SingleAch} />
+        <Route path="/leaderboard" component={LeaderBoard} />
         {/* <Route path="/addAch" component={()=> <AddAchievement />} /> */}
 
         {/* <NewUserForm /> */}

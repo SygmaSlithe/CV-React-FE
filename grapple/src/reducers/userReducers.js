@@ -1,4 +1,7 @@
 import {
+  LEADERBOARD_FAIL,
+  LEADERBOARD_REQUEST,
+  LEADERBOARD_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -30,6 +33,19 @@ export const userRegisterReducer = (state = {}, action) => {
     case USER_REGISTER_SUCCESS:
       return { loading: false, userInfo: action.payload };
     case USER_REGISTER_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const leaderboardReducer = (state = { userList: [] }, action) => {
+  switch (action.type) {
+    case LEADERBOARD_REQUEST:
+      return { loading: true };
+    case LEADERBOARD_SUCCESS:
+      return { loading: false, userList: action.payload };
+    case LEADERBOARD_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
