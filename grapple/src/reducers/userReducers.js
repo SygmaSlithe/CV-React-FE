@@ -2,6 +2,9 @@ import {
   LEADERBOARD_FAIL,
   LEADERBOARD_REQUEST,
   LEADERBOARD_SUCCESS,
+  USER_DATA_FAIL,
+  USER_DATA_REQUEST,
+  USER_DATA_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -46,6 +49,19 @@ export const leaderboardReducer = (state = { userList: [] }, action) => {
     case LEADERBOARD_SUCCESS:
       return { loading: false, userList: action.payload };
     case LEADERBOARD_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userDataReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_DATA_REQUEST:
+      return { loading: true };
+    case USER_DATA_SUCCESS:
+      return { loading: false, userInfo: action.payload };
+    case USER_DATA_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

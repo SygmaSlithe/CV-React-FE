@@ -3,6 +3,9 @@ import {
   LEADERBOARD_FAIL,
   LEADERBOARD_REQUEST,
   LEADERBOARD_SUCCESS,
+  USER_DATA_FAIL,
+  USER_DATA_REQUEST,
+  USER_DATA_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -102,5 +105,22 @@ export const leadList = () => async (dispatch) => {
           ? error.response.data.message
           : error.message,
     });
+  }
+};
+
+export const userDataAction = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: USER_DATA_REQUEST,
+    });
+
+    const { data } = await axios.get(`/api/users/resume/${id}`);
+    dispatch({ type: USER_DATA_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: USER_DATA_FAIL, payload: message });
   }
 };

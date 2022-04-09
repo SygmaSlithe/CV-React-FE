@@ -13,6 +13,8 @@ import {
 import logo from "../../images/grapple from srs1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userActions";
+// import { PDFDownloadLink } from "@react-pdf/renderer";
+// import Resume from "../Resume";
 
 const Header = ({ setSearch }) => {
   const history = useHistory();
@@ -62,6 +64,20 @@ const Header = ({ setSearch }) => {
                 </Nav>
               </Nav>
               <Nav className="flex-justify-end">
+                {/* <PDFDownloadLink
+                  document={<Resume />}
+                  fileName={userInfo?.fname + "_Resume"}
+                >
+                  <Nav.Link>
+                    <Link
+                      style={{ textDecoration: "inherit", color: "inherit" }}
+                      to="{`/ach/${userInfo._id}`}"
+                    >
+                      Generate Resume
+                    </Link>
+                  </Nav.Link>
+                </PDFDownloadLink> */}
+
                 <Nav.Link>
                   <Link
                     style={{ textDecoration: "inherit", color: "inherit" }}
@@ -70,6 +86,7 @@ const Header = ({ setSearch }) => {
                     My Achievements
                   </Link>
                 </Nav.Link>
+
                 <Nav.Link>
                   <Link
                     style={{ textDecoration: "inherit", color: "inherit" }}

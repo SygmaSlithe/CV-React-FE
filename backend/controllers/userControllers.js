@@ -78,4 +78,13 @@ const getLeads = asyncHandler(async (req, res) => {
   res.json(leadList);
 });
 
-module.exports = { registerUser, authUser, getLeads };
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).json({ message: "User Data Not Found." });
+  }
+});
+
+module.exports = { registerUser, authUser, getLeads, getUserById };

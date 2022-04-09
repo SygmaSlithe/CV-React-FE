@@ -1,0 +1,108 @@
+{
+  "$__": {
+    "activePaths": {
+      "paths": {
+        "isAdmin": "init",
+        "eduDetail": "init",
+        "contact": "init",
+        "password": "init",
+        "userId": "init",
+        "lname": "init",
+        "fname": "init",
+        "pic": "init",
+        "points": "init",
+        "_id": "init",
+        "address": "init",
+        "additionalDetail": "init",
+        "createdAt": "init",
+        "updatedAt": "init",
+        "__v": "init"
+      },
+      "states": {
+        "ignore": {},
+        "default": {},
+        "init": {
+          "_id": true,
+          "fname": true,
+          "lname": true,
+          "userId": true,
+          "password": true,
+          "address": true,
+          "contact": true,
+          "eduDetail": true,
+          "additionalDetail": true,
+          "isAdmin": true,
+          "pic": true,
+          "createdAt": true,
+          "updatedAt": true,
+          "__v": true,
+          "points": true
+        },
+        "modify": {},
+        "require": {}
+      },
+      "stateNames": ["require", "modify", "init", "default", "ignore"]
+    },
+    "strictMode": true,
+    "skipId": true,
+    "selected": {},
+    "fields": {},
+    "exclude": null,
+    "_id": "6246284712f171ab5e81ea37",
+    "emitter": {
+      "_events": {
+        "save": [null, null, null, null],
+        "isNew": [null, null, null, null]
+      },
+      "_eventsCount": 2,
+      "_maxListeners": 0
+    }
+  },
+  "$isNew": false,
+  "_doc": {
+    "_id": "6246284712f171ab5e81ea37",
+    "fname": "Ari",
+    "lname": "Statchel",
+    "userId": "test",
+    "password": "$2a$10$A4Ab1SRLrzRIaI0Lsm1s1eCr8.xNrOla6Y70AYQvgw2M8qGbUZKGi",
+    "address": {
+      "city": "VVN",
+      "province": "Gujarat",
+      "zip": "123456",
+      "_id": "6246284712f171ab5e81ea38"
+    },
+    "contact": {
+      "email": "pt@pt.com",
+      "phone": ["1234567890"],
+      "_id": "6246284712f171ab5e81ea39"
+    },
+    "eduDetail": {
+      "school": {
+        "schoolName": "SIS",
+        "marks": "89%",
+        "_id": "6246284712f171ab5e81ea3b"
+      },
+      "uni": {
+        "uniName": "CHARUSAT",
+        "degree": "Btech in CSE",
+        "gradYear": 2026,
+        "_id": "6246284712f171ab5e81ea3c"
+      },
+      "_id": "6246284712f171ab5e81ea3a"
+    },
+    "additionalDetail": {
+      "socialLinks": ["https://github.com/rth1-618"],
+      "interests": ["huh"],
+      "talents": ["none"],
+      "skills": ["sleeping"],
+      "about": "this is me",
+      "_id": "6246284712f171ab5e81ea3d"
+    },
+    "isAdmin": false,
+    "pic": "anything!",
+    "createdAt": "2022-03-31T22:16:39.834Z",
+    "updatedAt": "2022-04-08T09:57:47.518Z",
+    "__v": 0,
+    "points": 1100
+  }
+}

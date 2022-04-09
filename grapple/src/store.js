@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
   leaderboardReducer,
+  userDataReducer,
   userLoginReducer,
   userRegisterReducer,
 } from "./reducers/userReducers";
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   achUpdate: achUpdateReducer,
   achDelete: achDeleteReducer,
   leaderboard: leaderboardReducer,
+  userData: userDataReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

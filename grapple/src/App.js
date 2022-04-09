@@ -37,6 +37,7 @@ function App() {
         <Route path="/createAch" component={CreateAch} />
         <Route path="/ach/:id" component={SingleAch} />
         <Route path="/leaderboard" component={LeaderBoard} />
+        {/* <Route path="/resume/:id" component={Resume}/> */}
         {/* <Route path="/addAch" component={()=> <AddAchievement />} /> */}
 
         {/* <NewUserForm /> */}
