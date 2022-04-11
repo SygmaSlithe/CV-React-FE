@@ -9,6 +9,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import jsPDF from "jspdf";
 
 import logo from "../../images/grapple from srs1.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,16 +68,15 @@ const Header = ({ setSearch }) => {
                 {/* <PDFDownloadLink
                   document={<Resume />}
                   fileName={userInfo?.fname + "_Resume"}
-                >
-                  <Nav.Link>
-                    <Link
-                      style={{ textDecoration: "inherit", color: "inherit" }}
-                      to="{`/ach/${userInfo._id}`}"
-                    >
-                      Generate Resume
-                    </Link>
-                  </Nav.Link>
-                </PDFDownloadLink> */}
+          >*/}
+                <Nav.Link>
+                  <Link
+                    style={{ textDecoration: "inherit", color: "inherit" }}
+                    to={`/resume/${userInfo._id}`}
+                  >
+                    Generate Resume
+                  </Link>
+                </Nav.Link>
 
                 <Nav.Link>
                   <Link

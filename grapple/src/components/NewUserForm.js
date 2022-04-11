@@ -92,7 +92,6 @@ const NewUserForm = ({ history }) => {
         skills: Yup.array(Yup.string()),
         about: Yup.string().required("Oh c'mon, tell us about yourself."),
       }),
-      pic: Yup.string(),
       acceptTerms: Yup.bool().oneOf(
         [true],
         "Can't proceed without accepting Terms"
@@ -462,16 +461,6 @@ const NewUserForm = ({ history }) => {
                     />
                   </div>
                 </section>
-
-                <div className="form-group">
-                  <label htmlFor="pic"> pic </label>
-                  <Field name="pic" type="text" className="form-control" />
-                  <ErrorMessage
-                    name="pic"
-                    component="div"
-                    className="text-danger"
-                  />
-                </div>
 
                 <div className="form-group form-check">
                   <Field

@@ -32,7 +32,6 @@ const userInitObj = {
     about: "",
   },
   isAdmin: false,
-  pic: "",
   acceptTerms: false,
 };
 

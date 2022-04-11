@@ -100,7 +100,7 @@ function CreateAch({ history }) {
                   <Form.Check
                     type="checkbox"
                     id="selfA"
-                    label="I have attested my file."
+                    label="The information I enter is true and genuine to my knowledge."
                   />
                 </div>
               </>

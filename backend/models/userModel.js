@@ -93,13 +93,9 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false, // Possible values: user | admin
     },
-    pic: {
-      type: String,
-      default:
-        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
-    },
     points: {
       type: Number,
+      required: true,
       default: 0,
     },
   },

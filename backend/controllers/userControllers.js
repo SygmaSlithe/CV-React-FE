@@ -12,7 +12,6 @@ const registerUser = asyncHandler(async (req, res) => {
     eduDetail,
     address,
     additionalDetail,
-    pic,
   } = req.body;
 
   const UserAlreadyExists = await User.findOne({ userId });
@@ -31,7 +30,6 @@ const registerUser = asyncHandler(async (req, res) => {
     password,
     contact,
     eduDetail,
-    pic,
   });
 
   if (user) {
@@ -40,7 +38,6 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       fname: user.fname,
       userId: user.userId,
-      pic: user.pic,
       token: generateToken(user._id),
     });
   } else {
@@ -60,7 +57,6 @@ const authUser = asyncHandler(async (req, res) => {
       fname: user.fname,
       userId: user.userId,
       isAdmin: user.isAdmin,
-      pic: user.pic,
       points: user.points,
       token: generateToken(user._id),
     });
