@@ -1,13 +1,10 @@
-import "./CreateAch.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
-import { Button, Card, Form, FormControl } from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
 import { createAch } from "../../actions/achActions";
 
 function CreateAch({ history }) {
@@ -23,7 +20,7 @@ function CreateAch({ history }) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(achName, category, subCategory, desc, selfAttested);
+    // console.log(achName, category, subCategory, desc, selfAttested);
     if (!achName || !category || !subCategory || !selfAttested) return;
     dispatch(createAch({ achName, category, subCategory, desc, selfAttested }));
     resetHandler();
@@ -62,29 +59,50 @@ function CreateAch({ history }) {
                     as="select"
                     value={category}
                     onChange={(e) => {
-                      console.log("e.target.value", e.target.value);
+                      // console.log("e.target.value", e.target.value);
                       setCategory(e.target.value);
                     }}
                   >
                     <option value="">Select Category</option>
-                    <option value="Cat1">Cat1</option>
-                    <option value="paws">Paws</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Non Technical">Non Technical</option>
                   </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId="subCategory">
-                  <Form.Label>SubCategory</Form.Label>
-
-                  <Form.Control
-                    as="select"
-                    value={subCategory}
-                    onChange={(e) => setSubCategory(e.target.value)}
-                  >
-                    <option>Select a SubCategory</option>
-                    <option value="Auto Feeder">Auto Feeder</option>
-                    <option value="Yarn Ball">"Yarn Ball"</option>
-                  </Form.Control>
-                </Form.Group>
+                {category == "Technical" ? (
+                  <Form.Group controlId="subCategory">
+                    <Form.Label>SubCategory</Form.Label>
+                    <Form.Control
+                      as="select"
+                      value={subCategory}
+                      onChange={(e) => setSubCategory(e.target.value)}
+                    >
+                      <option>Select a SubCategory</option>
+                      <option value="Event Participation">
+                        Event Participation
+                      </option>
+                      <option value="NPTEL">NPTEL</option>
+                      <option value="Hackathon">Hackathon</option>
+                      <option value="Workshop/Seminar">Workshop/Seminar</option>
+                      <option value="Other">Other</option>
+                    </Form.Control>
+                  </Form.Group>
+                ) : (
+                  <Form.Group controlId="subCategory">
+                    <Form.Label>SubCategory</Form.Label>
+                    <Form.Control
+                      as="select"
+                      value={subCategory}
+                      onChange={(e) => setSubCategory(e.target.value)}
+                    >
+                      <option>Select a SubCategory</option>
+                      <option value="Sports">Sports</option>
+                      <option value="Art/Dance/Music">Art/Dance/Music</option>
+                      <option value="Language">Language</option>
+                      <option value="Other">Other</option>
+                    </Form.Control>
+                  </Form.Group>
+                )}
 
                 <Form.Group controlId="desc">
                   <Form.Label>Description</Form.Label>
@@ -105,20 +123,6 @@ function CreateAch({ history }) {
                 </div>
               </>
             )}
-            {/* <Form.Group controlId="selfAttested">
-              <Form.Control
-                type="checkbox"
-                name="selfA"
-                value="Yes"
-                onChange={(e, value) => {
-                  if (value === "Yes") {
-                    setSelfAttested(e.target.value);
-                  }
-                  console.log(selfAttested);
-                }}
-              />
-              <Form.Label>I have attested my file.</Form.Label>{" "}
-            </Form.Group> */}
             {/* {loading && <Loading size={50}/>} */}
             <Button type="submit" variant="success">
               Add Achievement
@@ -132,18 +136,6 @@ function CreateAch({ history }) {
           Adding on {new Date().toLocaleDateString()}
         </Card.Footer>
       </Card>
-      {/* {success && (
-        <>
-          <ErrorMessage variant="success">
-            {"Achievement Successfully Added"}
-          </ErrorMessage>
-          <Link to="/myachs">
-            <Button style={{ marginBottom: 6 }} variant="success" size="lg">
-              Go to My Achievements
-            </Button>
-          </Link>
-        </>
-      )} */}
     </MainScreen>
   );
 }

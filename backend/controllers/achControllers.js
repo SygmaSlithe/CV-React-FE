@@ -1,6 +1,7 @@
 const Ach = require("../models/achModel");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
+const getPoints = require("../utils/getPoints");
 
 const getAchs = asyncHandler(async (req, res) => {
   // use of middleware: to find, we need to pass id of User, but can't tell user to enter it manually, oalso, we gotta protect db from unauth access, so we create a middleware to achieve that
@@ -9,20 +10,13 @@ const getAchs = asyncHandler(async (req, res) => {
 });
 
 const createAch = asyncHandler(async (req, res) => {
-  const {
-    achName,
-    category,
-    subCategory,
-    desc,
-    selfAttested,
-    certficate,
-    points,
-  } = req.body;
+  const { achName, category, subCategory, desc, selfAttested } = req.body;
 
   if (!achName || !category || !subCategory || !desc || !selfAttested) {
     res.status(400);
     throw new Error("Please Fill All Details.");
   } else {
+    const points = getPoints(category, subCategory);
     const ach = new Ach({
       user: req.user._id,
       achName,
@@ -58,8 +52,7 @@ const getAchById = asyncHandler(async (req, res) => {
 
 const updateAch = asyncHandler(async (req, res) => {
   //new values
-  const { achName, category, subCategory, desc, selfAttested, points } =
-    req.body;
+  const { achName, category, subCategory, desc, selfAttested } = req.body;
 
   const ach = await Ach.findById(req.params.id);
   if (ach.user.toString() !== req.user._id.toString()) {
@@ -69,6 +62,8 @@ const updateAch = asyncHandler(async (req, res) => {
 
   if (ach) {
     //update values
+    let points = getPoints(category, subCategory);
+
     ach.achName = achName;
     ach.category = category;
     ach.subCategory = subCategory;

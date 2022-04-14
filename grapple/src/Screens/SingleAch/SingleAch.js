@@ -27,7 +27,7 @@ function SingleAch({ match, history }) {
 
   useEffect(() => {
     const fecthing = async () => {
-      const { data } = await axios.get(`api/achs/${match.params.id}`);
+      const { data } = await axios.get(`/api/achs/${match.params.id}`);
       setAchName(data.achName);
       setCategory(data.category);
       setSubCategory(data.subCategory);
@@ -92,35 +92,57 @@ function SingleAch({ match, history }) {
                 onChange={(e) => setAchName(e.target.value)}
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicSelect">
               <Form.Label>Category</Form.Label>
               <Form.Control
                 as="select"
                 value={category}
                 onChange={(e) => {
-                  console.log("e.target.value", e.target.value);
+                  // console.log("e.target.value", e.target.value);
                   setCategory(e.target.value);
                 }}
               >
                 <option value="">Select Category</option>
-                <option value="Cat1">Cat1</option>
-                <option value="paws">Paws</option>
+                <option value="Technical">Technical</option>
+                <option value="Non Technical">Non Technical</option>
               </Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="subCategory">
-              <Form.Label>SubCategory</Form.Label>
-
-              <Form.Control
-                as="select"
-                value={subCategory}
-                onChange={(e) => setSubCategory(e.target.value)}
-              >
-                <option>Select a SubCategory</option>
-                <option value="Auto Feeder">Auto Feeder</option>
-                <option value="Yarn Ball">"Yarn Ball"</option>
-              </Form.Control>
-            </Form.Group>
+            {category == "Technical" ? (
+              <Form.Group controlId="subCategory">
+                <Form.Label>SubCategory</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={subCategory}
+                  onChange={(e) => setSubCategory(e.target.value)}
+                >
+                  <option>Select a SubCategory</option>
+                  <option value="Event Participation">
+                    Event Participation
+                  </option>
+                  <option value="NPTEL">NPTEL</option>
+                  <option value="Hackathon">Hackathon</option>
+                  <option value="Workshop/Seminar">Workshop/Seminar</option>
+                  <option value="Other">Other</option>
+                </Form.Control>
+              </Form.Group>
+            ) : (
+              <Form.Group controlId="subCategory">
+                <Form.Label>SubCategory</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={subCategory}
+                  onChange={(e) => setSubCategory(e.target.value)}
+                >
+                  <option>Select a SubCategory</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Art/Dance/Music">Art/Dance/Music</option>
+                  <option value="Language">Language</option>
+                  <option value="Other">Other</option>
+                </Form.Control>
+              </Form.Group>
+            )}
 
             <Form.Group controlId="desc">
               <Form.Label>Description</Form.Label>
@@ -136,7 +158,7 @@ function SingleAch({ match, history }) {
               <Form.Check
                 type="checkbox"
                 id="selfA"
-                label="I have attested my file."
+                label="The information I enter is true and genuine to my knowledge."
               />
             </div>
             {loading && <Loading size={50} />}
@@ -155,7 +177,7 @@ function SingleAch({ match, history }) {
           </Form>
         </Card.Body>
         <Card.Footer className="text-muted">
-          Updated on {new Date().toLocaleDateString()}
+          Updating on {new Date().toLocaleDateString()}
         </Card.Footer>
       </Card>
     </MainScreen>

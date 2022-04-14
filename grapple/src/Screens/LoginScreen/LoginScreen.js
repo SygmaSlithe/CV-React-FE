@@ -27,6 +27,7 @@ const LoginScreen = ({ history }) => {
   const submitHandler = async (event) => {
     event.preventDefault();
     dispatch(login(userId, password));
+    // without redux
     // console.log(userId, password);
     // try {
     //   const config = {

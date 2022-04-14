@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
-// import achievements from "../../data/dummyAch";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAch, listAchs } from "../../actions/achActions";
 import Loading from "../../components/Loading";
@@ -69,7 +68,7 @@ const MyAchievements = ({ search }) => {
       {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
       {loading && <Loading />}
 
-      {console.log("achs", achs)}
+      {/* console.log("achs", achs) */}
       {achs
         ?.reverse()
         .filter((filteredAch) =>

@@ -20,7 +20,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400); //error code 400
     throw new Error("User " + userId + " Already Exists.");
   }
-
+  let points = 0;
   const user = await User.create({
     fname,
     lname,
@@ -30,6 +30,7 @@ const registerUser = asyncHandler(async (req, res) => {
     password,
     contact,
     eduDetail,
+    points,
   });
 
   if (user) {

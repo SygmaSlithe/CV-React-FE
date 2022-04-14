@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   Navbar,
@@ -7,21 +7,19 @@ import {
   Container,
   Form,
   FormControl,
-  Button,
 } from "react-bootstrap";
-import jsPDF from "jspdf";
 
 import logo from "../../images/grapple from srs1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userActions";
-// import { PDFDownloadLink } from "@react-pdf/renderer";
-// import Resume from "../Resume";
 
 const Header = ({ setSearch }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  // useEffect(() => {}, [dispatch, history, userInfo]);
 
   const logoutHandler = () => {
     // localStorage.removeItem("userInfo");
@@ -65,10 +63,6 @@ const Header = ({ setSearch }) => {
                 </Nav>
               </Nav>
               <Nav className="flex-justify-end">
-                {/* <PDFDownloadLink
-                  document={<Resume />}
-                  fileName={userInfo?.fname + "_Resume"}
-          >*/}
                 <Nav.Link>
                   <Link
                     style={{ textDecoration: "inherit", color: "inherit" }}

@@ -28,7 +28,7 @@ export const login = (userId, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/users/login",
+      `/api/users/login`,
       {
         userId,
         password,
@@ -72,7 +72,7 @@ export const register = (dataBody) => async (dispatch) => {
     };
     // setLoading(true);
     const { data } = await axios.post("/api/users", dataBody, config);
-    console.log("data from DB", data);
+    // console.log("data from DB", data);
     // setLoading(false);
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });

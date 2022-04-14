@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import jsPDF from "jspdf";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -7,6 +7,7 @@ import { userDataAction } from "../actions/userActions";
 import { listAchs } from "../actions/achActions";
 import ErrorMessage from "./ErrorMessage";
 import Loading from "./Loading";
+import MainScreen from "./MainScreen";
 
 const Resume = ({ match }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Resume = ({ match }) => {
   useEffect(() => {
     dispatch(userDataAction(match.params.id));
     dispatch(listAchs());
-  }, [dispatch, history]);
+  }, [dispatch, history, match.params.id]);
 
   const generatePDF = () => {
     const doc = new jsPDF();
@@ -184,20 +185,28 @@ const Resume = ({ match }) => {
       doc.text(":  " + d, 55, y, { maxWidth: 140 });
     }
 
-    doc.save("dry1.pdf");
+    doc.save(fname + "'s Resume.pdf");
   };
   return (
-    <>
+    <MainScreen title="Download Your Resume">
       {/* {console.log("user", ui)}
       {console.log("ach", achs)} */}
       {/*error || errorAch ? () : (loading || loadingAch ? () : ())*/}
       {errorAch && <ErrorMessage variant="danger">{errorAch}</ErrorMessage>}
       {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
       {loadingAch && <Loading />}
-      <Button variant="success" onClick={generatePDF}>
-        Download My Resume
-      </Button>
-    </>
+      <Container>
+        <Row>
+          <Col>{ui?.fname + "'s Resume.pdf"}</Col>
+          <Col>
+            <Button variant="success" onClick={generatePDF}>
+              Here it is!
+            </Button>
+          </Col>
+          <Col></Col>
+        </Row>
+      </Container>
+    </MainScreen>
   );
 };
 

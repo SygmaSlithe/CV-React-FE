@@ -1,7 +1,4 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
-import NewUserForm from "./components/NewUserForm";
-// import SideBar from "./components/SideBar/SideBar";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import LandingPage from "./Screens/LandingPage/LandingPage";
@@ -17,11 +14,8 @@ import Resume from "./components/Resume";
 
 function App() {
   const [search, setSearch] = useState("");
-  console.log(search);
+  // console.log(search);
   return (
-    // <div className="App" id="outer-container">
-    //   <SideBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
-    //   <div id="page-wrap">
     <BrowserRouter>
       <Header setSearch={setSearch} />
       <main style={{ minHeight: "93vh" }}>
@@ -39,14 +33,11 @@ function App() {
         <Route path="/ach/:id" component={SingleAch} />
         <Route path="/leaderboard" component={LeaderBoard} />
         <Route path="/resume/:id" component={Resume} />
-        {/* <Route path="/addAch" component={()=> <AddAchievement />} /> */}
 
         {/* <NewUserForm /> */}
       </main>
       <Footer />
     </BrowserRouter>
-    //   </div>
-    // </div>
   );
 }
 

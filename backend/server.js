@@ -5,6 +5,7 @@ const userRoutes = require("./routes/userRoutes");
 const achRoutes = require("./routes/achRoutes");
 const achievements = require("./data/achievements");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
+const path = require("path");
 
 dotenv.config();
 const app = express();
@@ -13,9 +14,6 @@ app.use(express.json()); // imp!
 
 app.use("/api/users", userRoutes); //you had forgotten the forward slash here!!!!! -_-
 app.use("/api/achs", achRoutes);
-app.get("/", (req, res) => {
-  res.send("GET API is running...");
-});
 
 // fetch all
 // app.get("/api/achs", (req, res) => {
@@ -33,6 +31,23 @@ app.get("/api/achs/:id", (req, res) => {
 });
 */
 
+// ------------- deployment ---------------------
+
+__dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/grapple/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "grapple", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("GET API is running...");
+  });
+}
+
+// ------------- deployment ---------------------
 app.use(notFound);
 app.use(errorHandler);
 

@@ -1,10 +1,9 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Col, Form as FormBS, Row } from "react-bootstrap";
 import * as Yup from "yup";
 import userInitObj from "../data/userInitObj";
 import "./NewUserForm.css";
-import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import CustomErrorMessage from "./ErrorMessage";
 import Loading from "./Loading";
@@ -12,11 +11,9 @@ import { register } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const NewUserForm = ({ history }) => {
-  // handleSubmit = handleSubmit.bind(this);
   const dispatch = useDispatch();
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
-  // [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (userInfo) {
@@ -24,22 +21,6 @@ const NewUserForm = ({ history }) => {
     }
   }, [history, userInfo]);
 
-  /*{
-      email: Yup.string()
-        .required("Email is required")
-        .email("Email is invalid"),
-      phone: Yup.string()
-        .matches(/^[0-9]+$/, "Must be only digits")
-        .min(10, "Must be exactly 10 digits")
-        .max(10, "Must be exactly 10 digits"),
-
-      city: Yup.string(),
-      province: Yup.string(),
-      zip: Yup.string()
-        .matches(/^[0-9]+$/, "Must be only digits")
-        .min(6, "Must be exactly 6 digits")
-        .max(6, "Must be exactly 6 digits"),
-}*/
   const validationSchema = () => {
     return Yup.object().shape({
       fname: Yup.string().required("First name is required"),
@@ -100,25 +81,8 @@ const NewUserForm = ({ history }) => {
   };
 
   const handleSubmit = async (data) => {
-    console.log("data", data);
+    // console.log("data", data);
     dispatch(register(data));
-    // // e.preventDefault();
-    // console.log("Hi handler.");
-    // // console.log(data);
-    // // alert(JSON.stringify(data, null, 2));
-    // try {
-    //   const config = {
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //   };
-    //   // setLoading(true);
-    //   const { dataDB } = await axios.post("/api/users", data, config);
-    //   // setLoading(false);
-    //   localStorage.setItem(JSON.stringify(dataDB, null, 2));
-    // } catch (error) {
-    //   console.log(error.response.data.message);
-    // }
   };
 
   const initialValues = userInitObj;
@@ -196,28 +160,7 @@ const NewUserForm = ({ history }) => {
                       className="text-danger"
                     />
                   </div>
-                  {/* <FormBS>
-                    <FormBS.Group controlId="pic">
-                      <FormBS.Label>Profile Picture</FormBS.Label>
-                      <FormBS.File
-                        id="custom-file"
-                        type="image/png"
-                        label="Upload a picture of yours"
-                        custom
-                      />
-                    </FormBS.Group>
-                  </FormBS> */}
                 </section>
-
-                {/* <div className="form-group">
-                  <label htmlFor="dob"> Date of Birth </label>
-                  <Field name="dob" type="date" className="form-control" />
-                  <ErrorMessage
-                    name="dob"
-                    component="div"
-                    className="text-danger"
-                  />
-                </div> */}
 
                 <section>
                   <h4>Contact Details</h4>

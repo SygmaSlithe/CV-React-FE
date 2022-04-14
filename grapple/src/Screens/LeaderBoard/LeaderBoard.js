@@ -27,7 +27,7 @@ const LeaderBoard = () => {
           maxWidth: 720,
         }}
       >
-        {console.log("userList", userList)}
+        {/* {console.log("userList", userList)} */}
         {userList?.map((user, index) => (
           <Card
             className="py-3"
